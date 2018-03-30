@@ -1,2 +1,2 @@
 # DS
-Algorithms practice
+1.Algorithms practice
