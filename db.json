@@ -1,4 +1,5 @@
-[{
+{
+  "posts": [{
 		"user": "abhisheksingh",
 		"action": "deny",
 		"path": "/abc"
@@ -9,3 +10,4 @@
 		"path": "/allow"
 	}
 ]
+}
