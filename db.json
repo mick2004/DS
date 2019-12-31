@@ -1,5 +1,5 @@
 {
-  "rules": [{
+  "rules":[{
 		"user": "abhisheksingh",
 		"action": "deny",
 		"path": "/abc"
