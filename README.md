@@ -133,3 +133,119 @@
     Postorder traversal is used to delete the tree. Please see the question for deletion of tree for details. Postorder traversal is also useful to get the postfix expression of an expression tree. Please see http://en.wikipedia.org/wiki/Reverse_Polish_notation to for the usage of postfix expression.
     
     Example: Postorder traversal for the above given figure is 4 5 2 3 1.
+
+  Binary Heap
+  
+    A Binary Heap is a Binary Tree with following properties.
+    1) It’s a complete tree (All levels are completely filled except possibly the last level and the last level has all keys as left as possible). This property of Binary Heap makes them suitable to be stored in an array.
+    
+    2) A Binary Heap is either Min Heap or Max Heap. In a Min Binary Heap, the key at root must be minimum among all keys present in Binary Heap. The same property must be recursively true for all nodes in Binary Tree. Max Binary Heap is similar to MinHeap.
+    
+    Examples of Min Heap:
+    
+                10                      10
+             /      \               /       \  
+           20        100          15         30  
+          /                      /  \        /  \
+        30                     40    50    100   40
+    How is Binary Heap represented?
+    A Binary Heap is a Complete Binary Tree. A binary heap is typically represented as an array.
+    
+    The root element will be at Arr[0].
+    Below table shows indexes of other nodes for the ith node, i.e., Arr[i]:
+    Arr[(i-1)/2]	Returns the parent node
+    Arr[(2*i)+1]	Returns the left child node
+    Arr[(2*i)+2]	Returns the right child node
+    The traversal method use to achieve Array representation is Level Order
+    
+    
+    
+    
+    
+    Please refer Array Representation Of Binary Heap for details.
+    
+    
+    
+    Applications of Heaps:
+    1) Heap Sort: Heap Sort uses Binary Heap to sort an array in O(nLogn) time.
+    
+    2) Priority Queue: Priority queues can be efficiently implemented using Binary Heap because it supports insert(), delete() and extractmax(), decreaseKey() operations in O(logn) time. Binomoial Heap and Fibonacci Heap are variations of Binary Heap. These variations perform union also efficiently.
+    
+    3) Graph Algorithms: The priority queues are especially used in Graph Algorithms like Dijkstra’s Shortest Path and Prim’s Minimum Spanning Tree.
+    
+    4) Many problems can be efficiently solved using Heaps. See following for example.
+    a) K’th Largest Element in an array.
+    b) Sort an almost sorted array/
+    c) Merge K Sorted Arrays.
+    
+    Operations on Min Heap:
+    1) getMini(): It returns the root element of Min Heap. Time Complexity of this operation is O(1).
+    
+    2) extractMin(): Removes the minimum element from MinHeap. Time Complexity of this Operation is O(Logn) as this operation needs to maintain the heap property (by calling heapify()) after removing root.
+    
+    3) decreaseKey(): Decreases value of key. The time complexity of this operation is O(Logn). If the decreases key value of a node is greater than the parent of the node, then we don’t need to do anything. Otherwise, we need to traverse up to fix the violated heap property.
+    
+    
+    
+    
+    4) insert(): Inserting a new key takes O(Logn) time. We add a new key at the end of the tree. IF new key is greater than its parent, then we don’t need to do anything. Otherwise, we need to traverse up to fix the violated heap property.
+    
+    5) delete(): Deleting a key also takes O(Logn) time. We replace the key to be deleted with minum infinite by calling decreaseKey(). After decreaseKey(), the minus infinite value must reach root, so we call extractMin() to remove the key.
+
+5.Graph
+
+    A Graph is a non-linear data structure consisting of nodes and edges. The nodes are sometimes also referred to as vertices and the edges are lines or arcs that connect any two nodes in the graph. More formally a Graph can be defined as,
+    
+    A Graph consists of a finite set of vertices(or nodes) and set of Edges which connect a pair of nodes.
+    
+    
+    
+    In the above Graph, the set of vertices V = {0,1,2,3,4} and the set of edges E = {01, 12, 23, 34, 04, 14, 13}.
+    
+    Graphs are used to solve many real-life problems. Graphs are used to represent networks. The networks may include paths in a city or telephone network or circuit network. Graphs are also used in social networks like linkedIn, Facebook. For example, in Facebook, each person is represented with a vertex(or node). Each node is a structure and contains information like person id, name, gender, locale etc.
+    
+   Graph representation
+ 
+     A graph is a data structure that consists of the following two components:
+    1. A finite set of vertices also called as nodes.
+    2. A finite set of ordered pair of the form (u, v) called as edge. The pair is ordered because (u, v) is not the same as (v, u) in case of a directed graph(di-graph). The pair of the form (u, v) indicates that there is an edge from vertex u to vertex v. The edges may contain weight/value/cost.
+    
+    Graphs are used to represent many real-life applications: Graphs are used to represent networks. The networks may include paths in a city or telephone network or circuit network. Graphs are also used in social networks like linkedIn, Facebook. For example, in Facebook, each person is represented with a vertex(or node). Each node is a structure and contains information like person id, name, gender, and locale. See this for more applications of graph.
+    
+    Following is an example of an undirected graph with 5 vertices.
+    
+    
+    The following two are the most commonly used representations of a graph.
+    1. Adjacency Matrix
+    2. Adjacency List
+    There are other representations also like, Incidence Matrix and Incidence List. The choice of graph representation is situation-specific. It totally depends on the type of operations to be performed and ease of use.
+    
+    Adjacency Matrix:
+    Adjacency Matrix is a 2D array of size V x V where V is the number of vertices in a graph. Let the 2D array be adj[][], a slot adj[i][j] = 1 indicates that there is an edge from vertex i to vertex j. Adjacency matrix for undirected graph is always symmetric. Adjacency Matrix is also used to represent weighted graphs. If adj[i][j] = w, then there is an edge from vertex i to vertex j with weight w.
+    
+    
+    
+    
+    
+    
+    The adjacency matrix for the above example graph is:
+    Adjacency Matrix Representation
+    
+    Pros: Representation is easier to implement and follow. Removing an edge takes O(1) time. Queries like whether there is an edge from vertex ‘u’ to vertex ‘v’ are efficient and can be done O(1).
+    
+    Cons: Consumes more space O(V^2). Even if the graph is sparse(contains less number of edges), it consumes the same space. Adding a vertex is O(V^2) time.
+    Please see this for a sample Python implementation of adjacency matrix.
+    
+    
+    
+    Adjacency List:
+    An array of lists is used. The size of the array is equal to the number of vertices. Let the array be an array[]. An entry array[i] represents the list of vertices adjacent to the ith vertex. This representation can also be used to represent a weighted graph. The weights of edges can be represented as lists of pairs. Following is the adjacency list representation of the above graph.
+    
+BFS
+
+    Breadth First Traversal (or Search) for a graph is similar to Breadth First Traversal of a tree (See method 2 of this post). The only catch here is, unlike trees, graphs may contain cycles, so we may come to the same node again. To avoid processing a node more than once, we use a boolean visited array. For simplicity, it is assumed that all vertices are reachable from the starting vertex.
+    For example, in the following graph, we start traversal from vertex 2. When we come to vertex 0, we look for all adjacent vertices of it. 2 is also an adjacent vertex of 0. If we don’t mark visited vertices, then 2 will be processed again and it will become a non-terminating process. A Breadth First Traversal of the following graph is 2, 0, 3, 1.
+    
+DFS
+
+    Depth First Traversal (or Search) for a graph is similar to Depth First Traversal of a tree. The only catch here is, unlike trees, graphs may contain cycles, a node may be visited twice. To avoid processing a node more than once, use a boolean visited array.
